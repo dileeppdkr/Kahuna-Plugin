@@ -8,7 +8,7 @@ If you have not upgraded to the latest Cordova SDK, you should still continue us
 
 
 1. Add the Kahuna plugin to your project.
-{cordova plugin add kahuna-plugin}
+cordova plugin add kahuna-plugin
 
 
 Now, what data do you have on the people who use your app?
@@ -44,5 +44,10 @@ Your app allows some form of user login and/or registration. Some users can cont
 
   onResume: function() {
       Kahuna.onStart();
-  }                      
+  }    
+  
+5. Since you've incorporated user credentials into your app, you will need to tell Kahuna when the user logs out of your app. You can do that with the following:
+
+  Kahuna.logout();
+                        
                         
