@@ -8,7 +8,7 @@ If you have not upgraded to the latest Cordova SDK, you should still continue us
 
 
 1. Add the Kahuna plugin to your project.
-cordova plugin add kahuna-plugin
+{cordova plugin add kahuna-plugin}
 
 
 Now, what data do you have on the people who use your app?
