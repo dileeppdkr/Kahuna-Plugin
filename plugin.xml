@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    id="com.kahuna.phonegap.sdk"
+    version="2.3.0">
+
+    <name>Kahuna SDK Plugin</name>
+    <description>Cordova plugin for the Kahuna SDK 1.0</description>
+	<license>Copyright (C) Kahuna, Inc - All Rights Reserved</license>
+	
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+    
+    <js-module src="www/Kahuna.js" name="Kahuna">
+        <clobbers target="Kahuna" />
+    </js-module>
+
+    <js-module src="www/KahunaEvent.js" name="KahunaEvent">
+        <clobbers target="KahunaEvent" />
+    </js-module>
+
+    <js-module src="www/KahunaEventBuilder.js" name="KahunaEventBuilder">
+        <clobbers target="KahunaEventBuilder" />
+    </js-module>
+
+    <js-module src="www/KahunaUserCredentials.js" name="KahunaUserCredentials">
+        <clobbers target="KahunaUserCredentials" />
+    </js-module>
+
+    <access origin="*.tap-nexus.appspot.com" />
+
+    <!-- android -->
+    <platform name="android">
+		<config-file target="res/xml/config.xml" parent="/*">
+			<feature name="Kahuna">
+		    	<param name="android-package" value="com.kahuna.phonegap.sdk.KahunaPlugin" />
+		 	</feature>
+		</config-file>
+        
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.VIBRATE" />
+            <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+            <uses-permission android:name="android.permission.WAKE_LOCK" />
+            <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+            <uses-permission android:name="$PACKAGE_NAME.permission.C2D_MESSAGE" />
+            <permission android:name="$PACKAGE_NAME.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+        </config-file>
+        
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <receiver android:name="com.kahuna.sdk.KahunaCoreReceiver" />
+            <receiver android:name="com.kahuna.sdk.KahunaPushReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+                <intent-filter>
+                    <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                    <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                    <category android:name="$PACKAGE_NAME" />
+                </intent-filter>
+            </receiver>
+            <service android:name="com.kahuna.sdk.KahunaPushService" />
+
+            <receiver android:name="com.kahuna.phonegap.sdk.KahunaPlugin$KahunaCordovaCoreReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+                <intent-filter>
+                    <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                    <category android:name="$PACKAGE_NAME" />
+                </intent-filter>
+            </receiver>
+            <receiver android:name="com.kahuna.phonegap.sdk.KahunaPlugin$KAPushReceiver" />
+        </config-file>
+		
+        <source-file src="src/android/KahunaPlugin.java" target-dir="src/com/kahuna/phonegap/sdk" />
+        <source-file src="src/android/Kahuna_PhoneGap.jar" target-dir="libs" />
+	</platform>
+    
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="Kahuna">
+                <param name="ios-package" value="KahunaPlugin" />
+            </feature>
+        </config-file>
+        <header-file src="src/ios/KahunaPlugin.h" />
+        <source-file src="src/ios/KahunaPlugin.m" />
+        
+        <header-file src="src/ios/KAHEvent.h" />
+        <header-file src="src/ios/KAHEventBuilder.h" />
+        <header-file src="src/ios/KAHNSObject+JSON.h" />
+        <header-file src="src/ios/Kahuna.h" />
+        <source-file src="src/ios/libKahuna.a" framework="true" />
+        
+        <framework src="SystemConfiguration.framework" />
+	<framework src="CoreLocation.framework" />
+	<framework src="CoreBluetooth.framework" />
+        
+    </platform>
+    
+</plugin>

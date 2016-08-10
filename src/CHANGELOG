@@ -1,0 +1,63 @@
+-------------------------
+2.3.2 - December 4, 2015
+-------------------------
+- Updated internal Kahuna Android Library to 2.3.2 with improved debug logging.
+
+-------------------------
+2.3.1 - November 12, 2015
+-------------------------
+- Updated internal Kahuna Android Library to 2.3.1 which has reduced package size and reduced method count.
+- Updated internal Kahuna iOS Library to 2.3.1 which has improved push token handling.
+
+-------------------------
+2.3.0 - November 6, 2015
+-------------------------
+- Updated internal Kahuna Android Library to 2.3.0 with new API for setting notification small icon only.
+
+-------------------------
+2.2.4 - October 29, 2015
+-------------------------
+- Updated internal Kahuna Android Library to 2.2.4 with newer APIs for notification large/small icons.
+- Updated internal Kahuna iOS Library to 2.2.4 with removal of CLANG_ENABLE_MODULE_DEBUGGING &
+  CLANG_ENABLE_MODULES to avoid linker warnings.
+
+-------------------------
+2.2.3 - September 30, 2015
+-------------------------
+- Intelligent Events : Added new API for tracking events with properties.
+  NOTE: Please check with your CS representative before you use the Intelligent Events API
+- Updated internal Kahuna Android Library to 2.2.3 with support for Android M and Play Services 8.1.0.
+- Updated internal Kahuna iOS Library to 2.2.2 with BITCODE + MODULES support for iOS9.
+
+-------------------------
+2.0.3 - July 22, 2015
+-------------------------
+- Updated internal Kahuna Android and iOS Libraries to version 2.0.3.
+
+-------------------------
+2.0.2 - July 15, 2015
+-------------------------
+- Added improvements for trigger campaign event processing.
+- Minor fix to Android plugin to track empty credentials as a user logout to match iOS plugin.
+
+-------------------------
+2.0.0 - May 15, 2015
+-------------------------
+- Introduced a new Login API that will allow multiple credentials to be submitted at the same time.
+
+-------------------------
+571
+-------------------------
+- Added improvements for trigger campaign event processing. Feature released in SDK version 2.0.2.
+
+-------------------------
+556 - March 31, 2015
+-------------------------
+- iOS : Added logic for getting the push message from launchOptions app delegate callback. This is then 
+  passed to the Javascript function that has been registered for receiving InApp and Push messages.
+
+-------------------------
+550 - March 2, 2015
+-------------------------
+- API startWithKey has been deprecated in favor of API launchWithKey.
+- InApp and Push messages can now be retrieved with a callback function.
